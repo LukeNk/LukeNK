@@ -9,6 +9,14 @@ function getFile(path, res) {
     })
 }
 
+(function() {
+    // initial, update APIs
+    fs.readdir('API/song', (err, files) => {
+        fs.writeFile('API/song/count', `${files.length-1}`, 'utf8', () => {});
+    });
+
+})()
+
 let server = http.createServer((req, res) => {
     if (req.url == '/') {
         getFile('index.html', res);

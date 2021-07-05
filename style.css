@@ -16,6 +16,7 @@
 }
 
 body {
+    padding-top: 1em;
     padding-left: 10vw;
     padding-right: 10vw;
     background-color: var(--color-bg);

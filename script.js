@@ -13,6 +13,7 @@ function loadData(link, callback) {
 }
 
 (function() {
+    // load all of components
     let divs = document.getElementsByTagName('div');
     for (div of divs) {
         let id = div.getAttribute('id');
