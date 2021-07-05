@@ -24,19 +24,7 @@
 <body>
     <div id="comp-menuBar"></div>
     <p style="color: var(--color-liTx); margin-left: 3em;">There are <span id="songCount">N/A</span> songs</p>
-    <div id="songList">
-        <div class="song">
-            <div style="float: left; width: 70%">
-                <h3>LukeNK - Darkness</h3>
-                <p>"I won, but at what cost?" Sometimes, I just feel like darkness is a part of my life. In the dark, you know nothing, you see nothing.... and you worry nothing... This is the first original song that I have published online. <br> The story
-                    behind this song is very long and unrelated to music, so I just hope you can feel this song any way you want, and hope you can be happy. (Oh btw I need to design a new thumbnail for videos lol ^^)</p>
-            </div>
-            <div style="float: right; width: 25%;">
-                <p style="text-align: right; color: var(--color-pad);">Time</p>
-                <img src="https://cdn.discordapp.com/attachments/691662971474149386/838780830884691968/pOMjY_R0zalSuOtsaRyJws2PjrcKAKSKQ707d6gIjvQwVwKgZAoOQ8xFEAbl4n4K9XpuABVL6TnS-yMqCqMU47URnMGlfiizFx45.png">
-            </div>
-        </div>
-    </div>
+    <div id="songList"></div>
 </body>
 <script src="script.js"></script>
 <script>
@@ -45,6 +33,9 @@
         loadData('/API/song/count', (data) => {
             document.getElementById('songCount').innerHTML = data;
             songCount = data;
+            loadData('/API/song/list.html', (data) => {
+                document.getElementById('songList').innerHTML = data;
+            })
         });
 
     })()

@@ -11,8 +11,8 @@ function getFile(path, res) {
 
 (function() {
     // initial, update APIs
-    fs.readdir('API/song', (err, files) => {
-        fs.writeFile('API/song/count', `${files.length-1}`, 'utf8', () => {});
+    fs.readFile('API/song/list.html', 'utf8', (err, data) => {
+        fs.writeFile('API/song/count', (data.match(/<div class="song">/g) || []).length, 'utf8', () => {});
     });
 
 })()
