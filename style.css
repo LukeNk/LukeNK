@@ -1,0 +1,20 @@
+/* CSS HEX */
+:root {
+    --color-bg: #343434ff;
+    --color-liBg: #d6e5e3ff;
+    --color-semi: #424874ff;
+    --color-main: #00ffffff;
+    --color-pad: #007AFF;
+    --color-grey: #a6b1e1ff;
+    --color-text: #fcf7ffff;
+    --color-liTx: #898980ff;
+
+    --lavender-web: #dcd6f7ff;
+    --light-gray: #cacfd6ff;
+    --screamin-green: #87ff65ff;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text)
+}
