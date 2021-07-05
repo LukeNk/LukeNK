@@ -15,9 +15,10 @@ function loadData(link, callback) {
 (function() {
     let divs = document.getElementsByTagName('div');
     for (div of divs) {
-        if (!div.getAttribute('id') || !div.getAttribute('id').includes('comp-')) continue;
-        loadData('comp/' + div.getAttribute('id') + '.html', (data) => {
-            div.innerHTML = data;
+        let id = div.getAttribute('id');
+        if (!id || !id.includes('comp-')) continue;
+        loadData('comp/' + id + '.html', (data) => {
+            document.getElementById(id).innerHTML = data; // idk why
         })
     }
 })()
