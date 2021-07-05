@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 :root {
     --color-bg: #343434ff;
     --color-liBg: #d6e5e3ff;
@@ -7,21 +9,65 @@
     --color-grey: #a6b1e1ff;
     --color-text: #fcf7ffff;
     --color-liTx: #898980ff;
-
+    /* Reserved */
     --lavender-web: #dcd6f7ff;
     --light-gray: #cacfd6ff;
     --screamin-green: #87ff65ff;
 }
 
 body {
+    padding-left: 10vw;
+    padding-right: 10vw;
     background-color: var(--color-bg);
     color: var(--color-text);
+    font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+h1,
+h2,
+h3 {
+    font-family: 'Comfortaa', cursive;
     color: var(--color-liTx);
 }
 
 p {
-    color: var(--color-text)
+    color: var(--color-text);
+}
+
+a {
+    color: #007AFF;
+    text-decoration: none;
+}
+
+a:hover,
+button:hover {
+    cursor: pointer;
+}
+
+
+/* Components */
+
+#comp-menuBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: var(--color-pad);
+}
+
+#comp-menuBar a {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    color: var(--color-text);
+    transition: background-color 0.4s ease-out;
+}
+
+#comp-menuBar a:hover {
+    color: var(--color-text);
+    background-color: var(--color-semi);
 }

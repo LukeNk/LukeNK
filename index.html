@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -7,29 +8,68 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <style>
         body {
-            padding-top: 100vh;
+            padding-top: 75vh;
         }
+        
         #topBanner {
             margin: 0;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-color: var(--color-liBg);
-            color: var(--color-liTx)
+            height: 75vh;
+            background-size: cover;
+            background-image: url(https://cdn.discordapp.com/attachments/685793534800035862/861477474868789278/dbvlnry-fb562863-bc36-4c8e-a17c-06b0336e48b9.jpg);
+            color: var(--color-text)
+        }
+        
+        #topText {
+            color: var(--color-text);
+            margin-top: 38.5vh;
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
+    <div id="comp-menuBar"></div>
     <div id="topBanner">
-        <h1 id="topText">Programming. Music. More.</h1>
+        <h1 id="topText"></h1>
+        <p style="position: absolute; right: 10%; bottom: 0;">Art by <a href="https://www.deviantart.com/tsunashiitau" target="_blank">tsunashiitau</a></p>
     </div>
-    <h1>Programming</h1>
-    <p>Can you see me</p>
-    <script src="script.js">
-        window.onload = () => {
-        }
-    </script>
+
+    <h1 style="text-align: center;"><code>Whoami</code></h1>
+    <p style="text-align: center;"><i>A normal teenager</i> who likes telling machine what to do, making speakers viberate and controlling iron cylinders to fly.</p>
+
+    <div style="float: left; width: 35vw;">
+        <h1>Programming</h1>
+        <p>I know Javascript, CSS and HTML. I also learned Pascal in school, and used to learn Python at home.</p>
+        <h2>Products</h2>
+        <p><a href="https://github.com/LukeNk/Star">Star project</a> is a file explorer that I am developing.</p>
+        <p><a href="https://github.com/LukeNk/Search-page">Search page</a> is a new tab page for people want a better design.</p>
+        <h2>Plans</h2>
+        <p>I do have many plan, but after complete this webpage &gt;&lt;</p>
+    </div>
+    <div style="float: right; width: 35vw;">
+        <h1 style="text-align: right;">Music</h1>
+        <p>I make piano covers, but starting to make my own songs as well. Creative is the key, so I am trying to mix other intruments as well.</p>
+        <p style="color: var(--color-liTx);">Fun fact: I don't even know how to play piano in real life</p>
+    </div>
 </body>
+<script src="script.js"></script>
+<script>
+    window.onload = () => {
+        let curText = 0,
+            text = "Programming, music and more!"
+
+        function openType() {
+            document.getElementById('topText').innerHTML += text[curText];
+            curText++;
+            if (curText == text.length) return;
+            setTimeout(openType, 100);
+        };
+        openType();
+    }
+</script>
+
 </html>
