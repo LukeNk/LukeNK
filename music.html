@@ -48,13 +48,33 @@
     (function() {
         loadData('/API/song/count', (data) => {
             document.getElementById('songCount').innerHTML = data;
+        });
+
+        // inside out loadData()
+        if (window.location.hash[1] == 's') {
+            let id = 'song-' + window.location.hash.substr(2, window.location.hash.length - 2);
+            loadData('/API/song/list.html', (data) => {
+                document.getElementById('songList').innerHTML = data;
+                for (div of document.getElementById('songList').children) {
+                    let divId = div.getAttribute('id');
+                    if (divId != id) {
+                        document.getElementById(divId).style.display = 'none'
+                    } else expand(document.getElementById(divId));
+                }
+            })
+            return;
+        } else
             loadData('/API/song/list.html', (data) => {
                 document.getElementById('songList').innerHTML = data;
                 if (window.location.hash) {
-                    document.getElementById('song-' + window.location.hash.substr(1, window.location.hash.length)).style.backgroundColor = 'var(--color-semi)'
+                    let id = 'song-' + window.location.hash.substr(1, window.location.hash.length - 1);
+                    try {
+                        document.getElementById(id).style.backgroundColor = 'var(--color-semi)';
+                        document.getElementById(id).scrollIntoView();
+                        expand(document.getElementById(id));
+                    } catch {}
                 }
             })
-        });
     })()
 </script>
 

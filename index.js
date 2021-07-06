@@ -4,9 +4,10 @@ const http = require('http');
 
 function getFile(path, res) {
     fs.readFile(path, (err, data) => {
-        if (err) {};
         if (typeof(res) == 'object') {
-            res.write((data) ? data : 'Cannot find');
+            if (err) {
+                res.writeHead(404, 'Not found');
+            } else res.write(data);
             res.end();
         } else if (typeof(res) == 'function') {
             res(data);

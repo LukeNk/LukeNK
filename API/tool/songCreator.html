@@ -14,6 +14,9 @@
         }
         
         button {
+            margin-top: 3em;
+            height: 3em;
+            color: var(--color-text);
             background-color: var(--color-pad);
         }
         
@@ -39,6 +42,8 @@
         <input id="oName">
         <p>Artist</p>
         <input id="artist">
+        <p>From</p>
+        <input id="from">
         <p>Tempo</p>
         <input id="tempo">
         <p>Instrument:</p>
@@ -78,8 +83,9 @@
             let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
     <div style="float: left; width: 70%">
         <h3 onclick="window.location.href='https://youtu.be/${ytId}'">${document.getElementById('name').value}</h3>
+        ${(document.getElementById('oName').value)? '<p>Original name: ' + document.getElementById('oName').value + '</p>' : ''}
         <p>Artist: ${document.getElementById('artist').value}</p>
-        <p>Original name: ${document.getElementById('oName').value}</p>
+        ${(document.getElementById('from').value)? '<p>From: ' + document.getElementById('from').value + '</p>' : ''}
         <p>Tempo: ${document.getElementById('tempo').value}</p>
         <p>Instrument: ${document.getElementById('inst').value}</p>
     </div>
