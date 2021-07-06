@@ -15,6 +15,10 @@
             overflow-y: auto;
         }
         
+        #songList h3:hover {
+            cursor: pointer;
+        }
+        
         #songList img {
             max-width: 100%;
         }
@@ -28,16 +32,20 @@
 </body>
 <script src="script.js"></script>
 <script>
+    function expand(div) {
+        div.style.height = (div.style.height) ? '' : '50vh';
+    }
+
     (function() {
-        let songCount;
         loadData('/API/song/count', (data) => {
             document.getElementById('songCount').innerHTML = data;
-            songCount = data;
             loadData('/API/song/list.html', (data) => {
                 document.getElementById('songList').innerHTML = data;
+                if (window.location.hash) {
+                    document.getElementById('song-' + window.location.hash.substr(1, window.location.hash.length)).style.backgroundColor = 'var(--color-semi)'
+                }
             })
         });
-
     })()
 </script>
 

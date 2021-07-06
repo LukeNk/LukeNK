@@ -14,6 +14,7 @@
             /* background-color: var(--color-semi); */
             overflow-y: auto;
         }
+        
         img {
             max-width: 100%;
         }
@@ -21,29 +22,33 @@
 </head>
 
 <body>
-<p>Name</p>
-<input id="name">
-<p>Desciption</p>
-<input id="desc">
-<p>Image link</p>
-<input id="imgLink">
-<button onclick="gen()">Generate</button>
+    <p>Name</p>
+    <input id="name">
+    <p>Youtube link</p>
+    <input id="ytLink">
+    <p>Desciption</p>
+    <textarea id="desc"></textarea>
+    <p>Image link</p>
+    <input id="imgLink">
+    <button onclick="gen()">Generate</button>
 </body>
 <script src="/script.js"></script>
 <script>
     function gen() {
-        let a = `<div class="song">
-            <div style="float: left; width: 70%">
-                <h3>${document.getElementById('name').value}</h3>
-                <p>${document.getElementById('desc').value}</p>
-            </div>
-            <div style="float: right; width: 25%;">
-                <p style="text-align: right; color: var(--color-pad);">Time</p>
-                <img src="${document.getElementById('imgLink').value}">
-            </div>
-        </div>`;
-        console.log(a);
-        document.body.innerHTML = a;
+        loadData('/API/song/count', (songId) => {
+            let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
+    <div style="float: left; width: 70%">
+        <h3 onclick="window.location.href='${document.getElementById('ytLink').value}'">${document.getElementById('name').value}</h3>
+        <p>${document.getElementById('desc').value.replace(/\n/g, '<br>')}</p>
+    </div>
+    <div style="float: right; width: 25%;">
+        <p style="text-align: right; color: var(--color-pad);">${songId}</p>
+        <img src="${document.getElementById('imgLink').value}">
+    </div>
+</div>`;
+            console.log(a);
+            document.body.innerHTML = a;
+        })
     }
 </script>
 
