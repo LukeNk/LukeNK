@@ -24,26 +24,35 @@
 <body>
     <p>Name</p>
     <input id="name">
-    <p>Youtube link</p>
-    <input id="ytLink">
-    <p>Desciption</p>
-    <textarea id="desc"></textarea>
-    <p>Image link</p>
-    <input id="imgLink">
+    <p>Original name</p>
+    <input id="oName">
+    <p>Artist</p>
+    <input id="artist">
+    <p>Tempo</p>
+    <input id="tempo">
+    <p>Instrument:</p>
+    <input id="inst">
+    <p>Youtube id</p>
+    <input id="ytId">
+
     <button onclick="gen()">Generate</button>
 </body>
 <script src="/script.js"></script>
 <script>
     function gen() {
         loadData('/API/song/count', (songId) => {
+            let ytId = document.getElementById('ytId').value;
             let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
     <div style="float: left; width: 70%">
-        <h3 onclick="window.location.href='${document.getElementById('ytLink').value}'">${document.getElementById('name').value}</h3>
-        <p>${document.getElementById('desc').value.replace(/\n/g, '<br>')}</p>
+        <h3 onclick="window.location.href='https://youtu.be/${ytId}'">${document.getElementById('name').value}</h3>
+        <p>Artist: ${document.getElementById('artist').value}</p>
+        <p>Original name: ${document.getElementById('oName').value}</p>
+        <p>Tempo: ${document.getElementById('tempo').value}</p>
+        <p>Instrument: ${document.getElementById('inst').value}</p>
     </div>
     <div style="float: right; width: 25%;">
         <p style="text-align: right; color: var(--color-pad);">${songId}</p>
-        <img src="${document.getElementById('imgLink').value}">
+        <iframe width="100%" src="https://www.youtube.com/embed/${ytId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>`;
             console.log(a);

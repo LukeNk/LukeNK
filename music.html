@@ -33,7 +33,16 @@
 <script src="script.js"></script>
 <script>
     function expand(div) {
-        div.style.height = (div.style.height) ? '' : '50vh';
+        if (!div.origin) {
+            // if not expanded
+            div.origin = div.children[0].innerHTML;
+            loadData(`/API/song/list/${div.getAttribute('id')}.html`, (data) => {
+                div.children[0].innerHTML += data; // MAY CREATE BUG
+            })
+        } else {
+            div.children[0].innerHTML = div.origin;
+            div.origin = false;
+        }
     }
 
     (function() {
