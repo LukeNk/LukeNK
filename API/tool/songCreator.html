@@ -61,6 +61,7 @@
     </div>
 
     <button style="width: 100%;" onclick="gen()">Generate</button>
+    <a id="downloadAnchorElem" style="display:none"></a>
 </body>
 <script src="/script.js"></script>
 <script>
@@ -79,8 +80,9 @@
 
     function gen() {
         loadData('/API/song/count', (songId) => {
-            let ytId = document.getElementById('ytId').value;
-            let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
+            loadData('/API/song/list.html', (songList) => {
+                let ytId = document.getElementById('ytId').value;
+                let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
     <div style="float: left; width: 70%">
         <h3 onclick="window.location.href='https://youtu.be/${ytId}'">${document.getElementById('name').value}</h3>
         ${(document.getElementById('oName').value)? '<p>Original name: ' + document.getElementById('oName').value + '</p>' : ''}
@@ -94,17 +96,23 @@
         <iframe width="100%" src="https://www.youtube.com/embed/${ytId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>`;
-            console.log(a);
+                console.log(a);
+                var dataStr = "data:text/html;charset=utf-8," + a + songList;
+                var dlAnchorElem = document.getElementById('downloadAnchorElem');
+                dlAnchorElem.setAttribute("href", dataStr);
+                dlAnchorElem.setAttribute("download", "list.html");
+                dlAnchorElem.click();
 
-            let b = '';
-            if (document.getElementById('audio').value) b += `<p>Source audio file: <a href="${document.getElementById('audio').value}">avaiable</a></p>`;
-            if (document.getElementById('sheet').value) b += `<p>Sheet: <a href="${document.getElementById('sheet').value}">avaiable</a></p>`;
-            if (document.getElementById('midi').value) b += `<p>MIDI file: <a href="${document.getElementById('midi').value}">avaiable</a></p>`;
-            console.log(b);
+                let b = '';
+                if (document.getElementById('audio').value) b += `<p>Source audio file: <a href="${document.getElementById('audio').value}">avaiable</a></p>`;
+                if (document.getElementById('sheet').value) b += `<p>Sheet: <a href="${document.getElementById('sheet').value}">avaiable</a></p>`;
+                if (document.getElementById('midi').value) b += `<p>MIDI file: <a href="${document.getElementById('midi').value}">avaiable</a></p>`;
+                console.log(b);
 
-            // excute data
-            document.body.innerHTML = a;
-            extra = b;
+                // excute data
+                document.body.innerHTML = a;
+                extra = b;
+            })
         })
     }
 </script>
