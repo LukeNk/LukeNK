@@ -60,7 +60,7 @@
         <input id="midi">
     </div>
 
-    <button style="width: 100%;" onclick="gen()">Generate</button>
+    <button id="clickButton" style="width: 100%;" onclick="gen()">Generate</button>
     <a id="downloadAnchorElem" style="display:none"></a>
 </body>
 <script src="/script.js"></script>
@@ -83,7 +83,7 @@
             loadData('/API/song/list.html', (songList) => {
                 let ytId = document.getElementById('ytId').value;
                 let a = `<div class="song" id="song-${songId}" onclick="expand(this)">
-    <div style="float: left; width: 70%">
+    <div style="float: left; width: 60%">
         <h3 onclick="window.location.href='https://youtu.be/${ytId}'">${document.getElementById('name').value}</h3>
         ${(document.getElementById('oName').value)? '<p>Original name: ' + document.getElementById('oName').value + '</p>' : ''}
         <p>Artist: ${document.getElementById('artist').value}</p>
@@ -91,7 +91,7 @@
         <p>Tempo: ${document.getElementById('tempo').value}</p>
         <p>Instrument: ${document.getElementById('inst').value}</p>
     </div>
-    <div style="float: right; width: 25%;">
+    <div style="float: right; width: 35%;">
         <p style="text-align: right; color: var(--color-pad);">${songId}</p>
         <iframe width="100%" src="https://www.youtube.com/embed/${ytId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -115,6 +115,12 @@
             })
         })
     }
+
+    (function() {
+        loadData('/API/song/count', (data) => {
+            document.getElementById('clickButton').innerHTML = `Generate song ID ${data}`
+        })
+    })();
 </script>
 
 </html>

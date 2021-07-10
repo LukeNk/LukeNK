@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Electrument</title>
+    <link rel="icon" type="image/png" href="/res/ETLogo.png" />
     <link href="style.css" rel="stylesheet" type="text/css" />
     <style>
         #songList .song {
@@ -27,8 +28,9 @@
 
 <body>
     <div id="comp-menuBar"></div>
-    <p style="color: var(--color-liTx); margin-left: 3em;">There are <span id="songCount">N/A</span> songs. Please use <code>ctrl+f</code> to find the song you want (for now).</p>
+    <p style="color: var(--color-liTx); margin-left: 3em;">There are <span id="songCount">N/A</span> songs. Please use <code>ctrl+f</code> to find the song you want (for now). Click on the card to get more information.</p>
     <div id="songList"></div>
+    <div id="comp-footer"></div>
 </body>
 <script src="script.js"></script>
 <script>

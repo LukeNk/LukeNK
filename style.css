@@ -7,12 +7,12 @@
     --color-main: #00ffffff;
     --color-pad: #007AFF;
     --color-grey: #a6b1e1ff;
+    --color-green: #87ff65ff;
     --color-text: #fcf7ffff;
     --color-liTx: #898980ff;
     /* Reserved */
     --lavender-web: #dcd6f7ff;
     --light-gray: #cacfd6ff;
-    --screamin-green: #87ff65ff;
 }
 
 ::-webkit-scrollbar {
@@ -61,6 +61,11 @@ button:hover {
     cursor: pointer;
 }
 
+hr {
+    width: 100%;
+    border-top: 1px solid var(--color-grey);
+}
+
 
 /* Components */
 
@@ -87,4 +92,8 @@ button:hover {
 #comp-menuBar a:hover {
     color: var(--color-text);
     background-color: var(--color-semi);
+}
+
+#comp-footer p {
+    color: var(--color-liTx);
 }
